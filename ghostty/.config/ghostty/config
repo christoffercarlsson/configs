@@ -1,0 +1,38 @@
+font-family = "JetBrainsMonoNL NFM"
+font-family-bold = "JetBrainsMonoNL NFM Bold"
+font-size = 14
+
+background = 1a2137
+foreground = e7ebf6
+
+# black
+palette = 0=#2e3859
+palette = 8=#586899
+
+# red
+palette = 1=#ed8cab
+palette = 9=#f3adc2
+
+# green
+palette = 2=#a4ba54
+palette = 10=#b9d167
+
+# yellow
+palette = 3=#e59b5d
+palette = 11=#f1b686
+
+# blue
+palette = 4=#6db7e9
+palette = 12=#95cbf3
+
+# magenta
+palette = 5=#b99ded
+palette = 13=#ccb8f3
+
+# cyan
+palette = 6=#56c4b1
+palette = 14=#6adbc7
+
+# white
+palette = 7=#bcc6e3
+palette = 15=#f5f6fb
