@@ -1,0 +1,23 @@
+[gpg]
+	format = ssh
+[init]
+	defaultBranch = main
+[pull]
+	rebase = true
+[push]
+	followTags = true
+[commit]
+	gpgsign = true
+[tag]
+	gpgsign = true
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[help]
+	autocorrect = 1
+[core]
+	excludesfile = ~/.gitignore
+	attributesfile = ~/.gitattributes
+[include]
+	path = ~/.gitconfig.local
