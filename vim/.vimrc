@@ -139,7 +139,7 @@ set wildmenu wildoptions=fuzzy,pum
 set pumheight=12 pumwidth=32
 
 if executable('rg')
-    set grepprg=rg\ --vimgrep\ --smart-case
+    set grepprg=rg\ --vimgrep\ --smart-case\ --hidden\ --glob=!.git/
     set grepformat=%f:%l:%c:%m
     command! -nargs=+ Rg execute 'silent grep! <args>' | redraw! | copen
     noremap <leader>f :Rg 
@@ -149,6 +149,7 @@ nnoremap <C-n> <cmd>cn<cr>
 nnoremap <C-p> <cmd>cp<cr>
 
 nnoremap <silent> <Esc> <cmd>set nohlsearch<cr>
+nnoremap <silent> <Esc><Esc> <cmd>cclose<cr>
 
 set confirm
 
