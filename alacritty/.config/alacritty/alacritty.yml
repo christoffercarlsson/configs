@@ -1,0 +1,33 @@
+font:
+    normal:
+        family: 'JetBrains Mono'
+    size: 13.0
+
+colors:
+    primary:
+        background: '#1a2137'
+        foreground: '#e7ebf6'
+
+    cursor:
+        text: '#1a2137'
+        cursor: '#e7ebf6'
+
+    normal:
+        black: '#2e3859'
+        red: '#ed8cab'
+        green: '#a4ba54'
+        yellow: '#e59b5d'
+        blue: '#6db7e9'
+        magenta: '#b99ded'
+        cyan: '#56c4b1'
+        white: '#bcc6e3'
+
+    bright:
+        black: '#586899'
+        red: '#f3adc2'
+        green: '#b9d167'
+        yellow: '#f1b686'
+        blue: '#95cbf3'
+        magenta: '#ccb8f3'
+        cyan: '#6adbc7'
+        white: '#f5f6fb'

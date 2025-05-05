@@ -1,8 +1,7 @@
 config-file = ?config-command
 
-font-family = "JetBrainsMonoNL NFM"
-font-family-bold = "JetBrainsMonoNL NFM Bold"
-font-size = 14
+font-family = "JetBrains Mono"
+font-size = 13
 
 background = 1a2137
 foreground = e7ebf6
