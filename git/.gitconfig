@@ -1,23 +1,25 @@
-[gpg]
-	format = ssh
-[init]
-	defaultBranch = main
-[pull]
-	rebase = true
-[push]
-	followTags = true
 [commit]
 	gpgsign = true
-[tag]
-	gpgsign = true
+[core]
+	excludesfile = ~/.gitignore
+	attributesfile = ~/.gitattributes
 [diff]
 	tool = vimdiff
 [difftool]
 	prompt = false
+[gpg]
+	format = ssh
 [help]
 	autocorrect = 1
-[core]
-	excludesfile = ~/.gitignore
-	attributesfile = ~/.gitattributes
+[init]
+	defaultBranch = main
 [include]
 	path = ~/.gitconfig.local
+[pull]
+	rebase = true
+[push]
+	followTags = true
+[tag]
+	gpgsign = true
+[user]
+	signingkey = ~/.ssh/id_ed25519.pub
