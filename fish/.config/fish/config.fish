@@ -1,2 +1,7 @@
-fish_add_path /opt/homebrew/bin
-set -x SSH_AUTH_SOCK /opt/homebrew/var/run/tkey-ssh-agent.sock
+switch (uname)
+case Linux
+    set -x SSH_AUTH_SOCK $XDG_RUNTIME_DIR/tkey-ssh-agent/sock
+case Darwin
+    fish_add_path /opt/homebrew/bin
+    set -x SSH_AUTH_SOCK /opt/homebrew/var/run/tkey-ssh-agent.sock
+end
