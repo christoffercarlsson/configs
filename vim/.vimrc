@@ -13,7 +13,7 @@ set list listchars=eol:\ ,trail:\·,tab:\·\·
 set expandtab
 set shiftwidth=4 tabstop=4 softtabstop=4
 
-set completeopt=fuzzy,menu,menuone,popup,noinsert
+set completeopt=menu,menuone,popup,noinsert
 
 set timeoutlen=300
 
