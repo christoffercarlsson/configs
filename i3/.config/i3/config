@@ -1,6 +1,6 @@
 set $mod Mod4
 
-font pango:monospace 8
+font pango:JetBrains Mono 13
 
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
@@ -27,7 +27,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # Start dmenu (a program launcher)
-bindsym $mod+space exec --no-startup-id dmenu_run
+bindsym $mod+space exec --no-startup-id dmenu_run -b -nf '#f5f6fb' -nb '#2e3859' -sf '#2e3859' -sb '#b99ded' -fn 'JetBrainsMono-16'
 
 # Change focus
 bindsym $mod+h focus left
@@ -90,10 +90,10 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # Resize window (you can also use the mouse for that)
 mode "resize" {
-    bindsym j resize shrink width 10 px or 10 ppt
-    bindsym k resize grow height 10 px or 10 ppt
-    bindsym l resize shrink height 10 px or 10 ppt
-    bindsym semicolon resize grow width 10 px or 10 ppt
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
 
     # Back to normal: Enter or Escape or $mod+r
     bindsym Return mode "default"
@@ -104,5 +104,27 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 bar {
+    position top
     status_command i3status
+    tray_output none
+    padding 0px 6px
+    colors {
+        background #2e3859
+        focused_workspace #2e3959 #2e3959 #f5f6fb
+        active_workspace #2e3959 #2e3959 #f5f6fb
+        urgent_workspace #2e3959 #2e3959 #f5f6fb
+        inactive_workspace #2e3959 #2e3959 #bcc6e3
+    }
 }
+
+# Window spacing
+gaps inner 6px
+gaps bottom 32px
+
+# Hide titlebars
+default_border pixel 3
+default_floating_border pixel 3
+for_window [class="^.*"] border pixel 3
+
+# class                 border  backgr. text    indicator child_border
+client.focused          #586899 #1a2137 #f5f6fb #586899   #586899

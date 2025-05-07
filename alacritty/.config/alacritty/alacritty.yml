@@ -1,7 +1,7 @@
 font:
+    size: 13.0
     normal:
         family: 'JetBrains Mono'
-    size: 13.0
 
 colors:
     primary:
