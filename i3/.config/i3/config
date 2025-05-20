@@ -3,7 +3,7 @@ set $mod Mod4
 font pango:JetBrains Mono 13
 
 exec --no-startup-id dex --autostart --environment i3
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork -c 000000
 exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
@@ -21,13 +21,15 @@ floating_modifier $mod
 tiling_drag modifier
 
 # Start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec uxterm
 
 # Kill focused window
 bindsym $mod+Shift+q kill
 
 # Start dmenu (a program launcher)
 bindsym $mod+space exec --no-startup-id dmenu_run -b -nf '#f5f6fb' -nb '#2e3859' -sf '#2e3859' -sb '#b99ded' -fn 'JetBrainsMono-16'
+
+bindsym $mod+Shift+i exec i3lock --nofork -c 000000
 
 # Change focus
 bindsym $mod+h focus left

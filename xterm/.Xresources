@@ -1,0 +1,60 @@
+xterm*background: #1a2137
+xterm*foreground: #e7ebf6
+
+! Black
+xterm*color0: #2e3859
+xterm*color8: #586899
+
+! Red
+xterm*color1: #ed8cab
+xterm*color9: #f3adc2
+
+! Green
+xterm*color2: #a4ba54
+xterm*color10: #b9d167
+
+! Yellow
+xterm*color3: #e59b5d
+xterm*color11: #f1b686
+
+! Blue
+xterm*color4: #6db7e9
+xterm*color12: #95cbf3
+
+! Magenta
+xterm*color5: #b99ded
+xterm*color13: #ccb8f3
+
+! Cyan
+xterm*color6: #56c4b1
+xterm*color14: #6adbc7
+
+! White
+xterm*color7: #bcc6e3
+xterm*color15: #f5f6fb
+
+xterm*faceName: JetBrainsMono
+xterm*faceSize: 13
+
+xterm*faceSize1: 8
+xterm*faceSize2: 10
+xterm*faceSize3: 13
+xterm*faceSize4: 16
+xterm*faceSize5: 21
+xterm*faceSize6: 26
+xterm*faceSize7: 34
+xterm*faceSize8: 42
+xterm*faceSize9: 55
+
+xterm.vt100.locale: true
+
+xterm.vt100.translations: #override \n\
+  Ctrl <Key> minus: smaller-vt-font() \n\
+  Ctrl <Key> plus: larger-vt-font() \n\
+  Ctrl <Key> 0: set-vt-font(d)
+
+xterm*cursorBlink: false
+xterm*scrollTtyOutput: false
+xterm*metaSendsEscape: true
+xterm*bellIsUrgent: false
+xterm*bellOff: true
