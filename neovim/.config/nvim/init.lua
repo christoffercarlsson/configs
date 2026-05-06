@@ -31,76 +31,6 @@ vim.diagnostic.config({
     },
 })
 
-vim.lsp.config("*", {
-    root_markers = { ".git" },
-    capabilities = {
-        textDocument = {
-            diagnostic = {
-                dynamicRegistration = true,
-                relatedDocumentSupport = true,
-            }
-        }
-    }
-})
-
-vim.lsp.config("lua-language-server", {
-    cmd = { "lua-language-server" },
-    filetypes = { "lua" },
-    root_markers = { ".luarc.json", ".luarc.jsonc", ".luacheckrc", ".stylua.toml", "stylua.toml" },
-    on_init = function(client)
-        client.settings = vim.tbl_deep_extend("force", client.settings, {
-            Lua = {
-                runtime = {
-                    version = "LuaJIT",
-                },
-                workspace = {
-                    checkThirdParty = false,
-                    library = {
-                        vim.env.VIMRUNTIME,
-                    }
-                }
-            }
-        })
-    end
-})
-
-vim.lsp.config("marksman", {
-    cmd = { "marksman", "server" },
-    filetypes = { "markdown", "markdown.mdx" },
-    root_markers = { ".marksman.toml" },
-})
-
-vim.lsp.config("rust-analyzer", {
-    cmd = { "rust-analyzer" },
-    filetypes = { "rust" },
-    root_markers = { "Cargo.toml", "Cargo.lock" },
-})
-
-vim.lsp.config("sourcekit-lsp", {
-    cmd = { "sourcekit-lsp" },
-    filetypes = { "swift" },
-    root_markers = { "Package.swift" },
-})
-
-vim.lsp.config("gopls", {
-    cmd = { "gopls" },
-    filetypes = { "go", "gomod", "gowork", "gotmpl" },
-    root_markers = { "go.work", "go.mod" }
-})
-
-vim.lsp.config("typescript-language-server", {
-    cmd = { "typescript-language-server", "--stdio" },
-    root_markers = { "tsconfig.json", "jsconfig.json", "package.json" },
-    filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
-})
-
-vim.lsp.enable("lua-language-server")
-vim.lsp.enable("marksman")
-vim.lsp.enable("rust-analyzer")
-vim.lsp.enable("sourcekit-lsp")
-vim.lsp.enable("gopls")
-vim.lsp.enable("typescript-language-server")
-
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("UserLspAttach", { clear = true }),
     callback = function(event)
@@ -129,9 +59,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         end
 
         map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
-
         map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
-
         map("<C-p>", vim.lsp.completion.trigger, "Trigger autocompletion", "i")
 
         local lsp_diagnostics_augroup = vim.api.nvim_create_augroup("UserLspDiagnostics", { clear = true })
@@ -167,3 +95,66 @@ vim.api.nvim_create_autocmd("LspAttach", {
         show_diagnostics()
     end,
 })
+
+vim.lsp.config("*", {
+    root_markers = { ".git" },
+    capabilities = {
+        textDocument = {
+            diagnostic = {
+                dynamicRegistration = true,
+                relatedDocumentSupport = true,
+            }
+        }
+    }
+})
+
+vim.lsp.config("lua-language-server", {
+    cmd = { "lua-language-server" },
+    filetypes = { "lua" },
+    root_markers = { ".luarc.json", ".luarc.jsonc", ".luacheckrc", ".stylua.toml", "stylua.toml" },
+    on_init = function(client)
+        client.settings = vim.tbl_deep_extend("force", client.settings, {
+            Lua = {
+                runtime = {
+                    version = "LuaJIT",
+                },
+                workspace = {
+                    checkThirdParty = false,
+                    library = {
+                        vim.env.VIMRUNTIME,
+                    }
+                }
+            }
+        })
+    end
+})
+
+vim.lsp.config("rust-analyzer", {
+    cmd = { "rust-analyzer" },
+    filetypes = { "rust" },
+    root_markers = { "Cargo.toml", "Cargo.lock" },
+})
+
+vim.lsp.config("sourcekit-lsp", {
+    cmd = { "sourcekit-lsp" },
+    filetypes = { "swift" },
+    root_markers = { "Package.swift" },
+})
+
+vim.lsp.config("gopls", {
+    cmd = { "gopls" },
+    filetypes = { "go", "gomod", "gowork", "gotmpl" },
+    root_markers = { "go.work", "go.mod" }
+})
+
+vim.lsp.config("typescript-language-server", {
+    cmd = { "typescript-language-server", "--stdio" },
+    root_markers = { "tsconfig.json", "jsconfig.json", "package.json" },
+    filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+})
+
+vim.lsp.enable("lua-language-server")
+vim.lsp.enable("rust-analyzer")
+vim.lsp.enable("sourcekit-lsp")
+vim.lsp.enable("gopls")
+vim.lsp.enable("typescript-language-server")
