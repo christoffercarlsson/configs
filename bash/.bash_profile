@@ -86,20 +86,12 @@ PS1+="$COLOR_BLUE\$PWD$COLOR_RESET\$(git_ps1 ' $COLOR_YELLOW(%s)$COLOR_RESET')\n
 
 export PS1
 
-# Use Vim as the default editor.
-export EDITOR="vim"
-
-export LANG="en_US.UTF-8"
-export LC_ALL="en_US.UTF-8"
-
-# Omit duplicate commands from the history file.
 export HISTCONTROL=ignoredups
+export HISTSIZE=1000
+export HISTFILESIZE=2000
 
-shopt -s histappend
+shopt -s checkwinsize histappend
 
-HISTSIZE=1000
-HISTFILESIZE=2000
+alias la="ls -ahl"
 
-shopt -s checkwinsize
-
-. "$HOME/.cargo/env"
+[ -f ~/.bash_profile.local ] && source ~/.bash_profile.local
