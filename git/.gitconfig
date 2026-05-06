@@ -4,8 +4,6 @@
 	attributesfile = ~/.gitattributes
 [difftool]
 	prompt = false
-[gpg]
-	format = ssh
 [help]
 	autocorrect = 1
 [init]
