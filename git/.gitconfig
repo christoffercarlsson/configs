@@ -1,10 +1,7 @@
 [commit]
 	gpgsign = true
 [core]
-	excludesfile = ~/.gitignore
 	attributesfile = ~/.gitattributes
-[diff]
-	tool = vimdiff
 [difftool]
 	prompt = false
 [gpg]
@@ -21,5 +18,3 @@
 	followTags = true
 [tag]
 	gpgsign = true
-[user]
-	signingkey = ~/.ssh/id_ed25519.pub
