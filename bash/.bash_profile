@@ -82,7 +82,7 @@ if [[ "$SSH_TTY" ]]
 then
   PS1+="$COLOR_GREEN\u@\h$COLOR_RESET: "
 fi
-PS1+="$COLOR_BLUE\$PWD$COLOR_RESET\$(git_ps1 ' $COLOR_YELLOW(%s)$COLOR_RESET')\n\$PS2"
+PS1+="$COLOR_BLUE\w$COLOR_RESET\$(git_ps1 ' $COLOR_YELLOW(%s)$COLOR_RESET')\n\$PS2"
 
 export PS1
 
