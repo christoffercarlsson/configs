@@ -129,32 +129,9 @@ vim.lsp.config("lua-language-server", {
     end
 })
 
-vim.lsp.config("rust-analyzer", {
-    cmd = { "rust-analyzer" },
-    filetypes = { "rust" },
-    root_markers = { "Cargo.toml", "Cargo.lock" },
-})
-
-vim.lsp.config("sourcekit-lsp", {
-    cmd = { "sourcekit-lsp" },
-    filetypes = { "swift" },
-    root_markers = { "Package.swift" },
-})
-
-vim.lsp.config("gopls", {
-    cmd = { "gopls" },
-    filetypes = { "go", "gomod", "gowork", "gotmpl" },
-    root_markers = { "go.work", "go.mod" }
-})
-
-vim.lsp.config("typescript-language-server", {
-    cmd = { "typescript-language-server", "--stdio" },
-    root_markers = { "tsconfig.json", "jsconfig.json", "package.json" },
-    filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
-})
-
 vim.lsp.enable("lua-language-server")
-vim.lsp.enable("rust-analyzer")
-vim.lsp.enable("sourcekit-lsp")
-vim.lsp.enable("gopls")
-vim.lsp.enable("typescript-language-server")
+
+local local_config = vim.fn.expand('~/.nvim.local')
+if vim.uv.fs_stat(local_config) then
+    vim.cmd.source(local_config)
+end
