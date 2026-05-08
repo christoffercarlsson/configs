@@ -1,4 +1,4 @@
-vim.cmd[[
+vim.cmd [[
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 source ~/.vimrc
 ]]
@@ -111,7 +111,7 @@ vim.lsp.config("*", {
 vim.lsp.config("lua-language-server", {
     cmd = { "lua-language-server" },
     filetypes = { "lua" },
-    root_markers = { ".luarc.json", ".luarc.jsonc", ".luacheckrc", ".stylua.toml", "stylua.toml" },
+    root_markers = { ".git", ".luarc.json", ".luarc.jsonc", ".luacheckrc", ".stylua.toml", "stylua.toml" },
     on_init = function(client)
         client.settings = vim.tbl_deep_extend("force", client.settings, {
             Lua = {
@@ -129,7 +129,14 @@ vim.lsp.config("lua-language-server", {
     end
 })
 
+vim.lsp.config("rumdl", {
+    cmd = { "rumdl", "server" },
+    filetypes = { "markdown" },
+    root_markers = { ".git", ".rumdl.toml" },
+})
+
 vim.lsp.enable("lua-language-server")
+vim.lsp.enable("rumdl")
 
 local local_config = vim.fn.expand('~/.nvim.local')
 if vim.uv.fs_stat(local_config) then
