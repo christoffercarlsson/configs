@@ -158,6 +158,8 @@ let g:loaded_netrwPlugin = 1
 
 set shortmess+=I
 
-syntax on
+if !has('nvim')
+    syntax on
+endif
 
 colorscheme ansi
