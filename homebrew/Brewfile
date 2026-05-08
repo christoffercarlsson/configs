@@ -1,0 +1,6 @@
+tap "tillitis/tkey"
+brew "stow"
+brew "tkey-ssh-agent", restart_service: :changed
+brew "tkey-verification"
+cask "font-jetbrains-mono-nerd-font"
+cask "ghostty"
