@@ -58,8 +58,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
             vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
         end
 
-        map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
-        map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
+        map("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
         map("<C-p>", vim.lsp.completion.get, "Trigger autocompletion", "i")
 
         local lsp_diagnostics_augroup = vim.api.nvim_create_augroup("UserLspDiagnostics", { clear = true })
