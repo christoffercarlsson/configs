@@ -43,25 +43,29 @@ vim.api.nvim_create_autocmd("LspAttach", {
                 buffer = event.buf,
                 callback = function()
                     vim.lsp.buf.format({ bufnr = event.buf, id = client.id })
-                end
+                end,
             })
         end
 
         if client:supports_method("textDocument/completion") then
-            vim.lsp.completion.enable(true, client.id, event.buf, { autotrigger = false })
+            vim.lsp.completion.enable(true, client.id, event.buf,
+                { autotrigger = false })
         end
 
-        vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+        vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist,
+            { desc = "Open diagnostic [Q]uickfix list" })
 
         local map = function(keys, func, desc, mode)
             mode = mode or "n"
-            vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
+            vim.keymap.set(mode, keys, func,
+                { buffer = event.buf, desc = "LSP: " .. desc })
         end
 
         map("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
         map("<C-p>", vim.lsp.completion.get, "Trigger autocompletion", "i")
 
-        local lsp_diagnostics_augroup = vim.api.nvim_create_augroup("UserLspDiagnostics", { clear = true })
+        local lsp_diagnostics_augroup = vim.api.nvim_create_augroup(
+            "UserLspDiagnostics", { clear = true })
 
         local function show_diagnostics()
             vim.diagnostic.enable(true)
@@ -76,19 +80,19 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.api.nvim_create_autocmd("BufWritePre", {
             group = lsp_diagnostics_augroup,
             buffer = event.buf,
-            callback = show_diagnostics
+            callback = show_diagnostics,
         })
 
         vim.api.nvim_create_autocmd("ModeChanged", {
             group = lsp_diagnostics_augroup,
             pattern = "n:*",
-            callback = hide_diagnostics
+            callback = hide_diagnostics,
         })
 
         vim.api.nvim_create_autocmd("ModeChanged", {
             group = lsp_diagnostics_augroup,
             pattern = "*:n",
-            callback = show_diagnostics
+            callback = show_diagnostics,
         })
 
         show_diagnostics()
@@ -102,9 +106,9 @@ vim.lsp.config("*", {
             diagnostic = {
                 dynamicRegistration = true,
                 relatedDocumentSupport = true,
-            }
-        }
-    }
+            },
+        },
+    },
 })
 
 vim.lsp.config("lua-language-server", {
@@ -121,11 +125,21 @@ vim.lsp.config("lua-language-server", {
                     checkThirdParty = false,
                     library = {
                         vim.env.VIMRUNTIME,
-                    }
-                }
-            }
+                    },
+                },
+                format = {
+                    enable = true,
+                    defaultConfig = {
+                        indent_size = "4",
+                        indent_style = "space",
+                        max_line_length = "80",
+                        quote_style = "double",
+                        trailing_table_separator = "smart",
+                    },
+                },
+            },
         })
-    end
+    end,
 })
 
 vim.lsp.config("rumdl", {
@@ -137,7 +151,7 @@ vim.lsp.config("rumdl", {
 vim.lsp.enable("lua-language-server")
 vim.lsp.enable("rumdl")
 
-local local_config = vim.fn.expand('~/.nvim.local')
+local local_config = vim.fn.expand("~/.nvim.local")
 if vim.uv.fs_stat(local_config) then
     vim.cmd.source(local_config)
 end
