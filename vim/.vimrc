@@ -98,7 +98,7 @@ function! TryChangeGitDirectory()
     let directory = empty(current_file) ? getcwd() : expand('%:p:h')
     while directory != '/'
         if isdirectory(directory . '/.git')
-            execute 'cd ' . directory
+            silent execute 'cd ' . directory
             return
         endif
         let directory = fnamemodify(directory, ':h')
@@ -143,6 +143,21 @@ if executable('rg')
     set grepformat=%f:%l:%c:%m
     command! -nargs=+ Rg execute 'silent grep! <args>' | redraw! | copen
     noremap <leader>f :Rg 
+endif
+
+if executable('jaq') || executable('jq')
+    let s:cmd = executable('jaq') ? 'jaq' : 'jq'
+
+    function! FormatJsonBuffer()
+        let view = winsaveview()
+        silent execute '%!' . s:cmd . ' .'
+        if v:shell_error != 0
+            silent undo
+        endif
+        call winrestview(view)
+    endfunction
+
+    autocmd! BufWritePre *.json call FormatJsonBuffer()
 endif
 
 nnoremap <C-n> <cmd>cn<cr>
