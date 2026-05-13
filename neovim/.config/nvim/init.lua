@@ -111,6 +111,11 @@ vim.lsp.config("*", {
     },
 })
 
+vim.lsp.config("bash-language-server", {
+    cmd = { "bash-language-server", "start" },
+    filetypes = { "bash", "sh" },
+})
+
 vim.lsp.config("lua-language-server", {
     cmd = { "lua-language-server" },
     filetypes = { "lua" },
@@ -148,6 +153,7 @@ vim.lsp.config("rumdl", {
     root_markers = { ".git", ".rumdl.toml" },
 })
 
+vim.lsp.enable("bash-language-server")
 vim.lsp.enable("lua-language-server")
 vim.lsp.enable("rumdl")
 
