@@ -145,19 +145,19 @@ if executable('rg')
     noremap <leader>f :Rg 
 endif
 
-if executable('jaq') || executable('jq')
-    let s:cmd = executable('jaq') ? 'jaq' : 'jq'
-
-    function! FormatJsonBuffer()
+if executable('jaq')
+    function! FormatJaqBuffer()
         let view = winsaveview()
-        silent execute '%!' . s:cmd . ' .'
+        silent execute '%!jaq -j --from ' . &filetype . ' --to ' . &filetype . ' .'
         if v:shell_error != 0
             silent undo
+        elseif &filetype == 'yaml'
+            silent! %substitute/^"on":/on:/
         endif
         call winrestview(view)
     endfunction
 
-    autocmd! BufWritePre *.json call FormatJsonBuffer()
+    autocmd! BufWritePre *.json,*.yaml,*.yml call FormatJaqBuffer()
 endif
 
 nnoremap <C-n> <cmd>cn<cr>

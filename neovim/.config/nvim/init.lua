@@ -153,9 +153,16 @@ vim.lsp.config("rumdl", {
     root_markers = { ".git", ".rumdl.toml" },
 })
 
+vim.lsp.config("tombi", {
+    cmd = { "tombi", "lsp" },
+    filetypes = { "toml" },
+    root_markers = { "tombi.toml", "pyproject.toml", ".git" },
+})
+
 vim.lsp.enable("bash-language-server")
 vim.lsp.enable("lua-language-server")
 vim.lsp.enable("rumdl")
+vim.lsp.enable("tombi")
 
 local local_config = vim.fn.expand("~/.nvim.local")
 if vim.uv.fs_stat(local_config) then
